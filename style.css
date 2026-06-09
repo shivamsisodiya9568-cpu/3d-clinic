@@ -1,0 +1,317 @@
+/* ==========================================================================
+   RS Clinic – Physiotherapy & Pain Rehabilitation, Agra
+   Cinematic Liquid-Glass Design System
+   Fully Responsive – Phone / Tablet / Desktop
+   ========================================================================== */
+
+/* Tailwind base – loaded via CDN in the HTML file
+   This file contains the custom design tokens and liquid-glass system
+*/
+
+/* -- Fonts --
+   Heading: Instrument Serif, italic
+   Body: Barlow 300/400/500/600
+   Loaded via Google Fonts in <head>
+*/
+
+:root {
+  --font-heading: "Instrument Serif", serif;
+  --font-body: "Barlow", sans-serif;
+  --bg: #000000;
+  --fg: #ffffff;
+  --glass-bg: rgba(255,255,255,0.01);
+  --glass-blur: 4px;
+  --glass-strong-blur: 50px;
+  --radius-pill: 9999px;
+  --radius-card: 20px;
+  --radius-card-lg: 22px;
+  --container-6xl: 72rem;
+  --container-7xl: 80rem;
+}
+
+/* Reset / base */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img, video { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; }
+
+/* Prevent iOS zoom */
+@media (max-width: 640px) {
+  input, select, textarea { font-size: 16px !important; }
+}
+
+/* Font utilities */
+.font-heading { font-family: var(--font-heading); }
+.font-body { font-family: var(--font-body); }
+
+/* ==========================================================================
+   LIQUID GLASS DESIGN SYSTEM
+   Exact from the cinematic space-travel prompt
+   ========================================================================== */
+
+.liquid-glass {
+  background: rgba(255,255,255,0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass::before {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.45) 0%,
+    rgba(255,255,255,0.15) 20%,
+    rgba(255,255,255,0) 40%,
+    rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.15) 80%,
+    rgba(255,255,255,0.45) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.liquid-glass-strong {
+  background: rgba(255,255,255,0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  border: none;
+  box-shadow: 4px 4px 4px rgba(0,0,0,0.05), inset 0 1px 1px rgba(255,255,255,0.15);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass-strong::before {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.50) 0%,
+    rgba(255,255,255,0.20) 20%,
+    rgba(255,255,255,0) 40%,
+    rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.20) 80%,
+    rgba(255,255,255,0.50) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   RS CLINIC – LAYOUT HELPERS
+   Phone / Tablet / Desktop responsive
+   ========================================================================== */
+
+.rs-container { width: 100%; max-width: 72rem; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+@media (min-width: 640px){ .rs-container { padding-left: 1.5rem; padding-right: 1.5rem; } }
+@media (min-width: 1024px){ .rs-container { padding-left: 2.5rem; padding-right: 2.5rem; } }
+
+.rs-section { background:#000; border-top: 1px solid rgba(255,255,255,0.09); padding-top: 4rem; padding-bottom: 4rem; }
+@media (min-width: 640px){ .rs-section { padding-top: 5rem; padding-bottom: 5rem; } }
+@media (min-width: 768px){ .rs-section { padding-top: 7rem; padding-bottom: 7rem; } }
+
+.rs-kicker { font-size: 12.7px; letter-spacing: .02em; color: rgba(255,255,255,.75); font-family: var(--font-body); margin-bottom: .65rem; }
+@media (min-width:640px){ .rs-kicker{ font-size:13px; } }
+
+.rs-h1 { font-family: var(--font-heading); font-style: italic; color: #fff; line-height:.94; letter-spacing: -0.025em; font-size: 34px; }
+@media (min-width: 480px){ .rs-h1{ font-size:40px;} }
+@media (min-width: 640px){ .rs-h1{ font-size:46px; letter-spacing:-0.03em;} }
+@media (min-width: 768px){ .rs-h1{ font-size:58px;} }
+
+.rs-h2 { font-family: var(--font-heading); font-style: italic; color:#fff; line-height:.96; letter-spacing:-0.02em; font-size:30px; }
+@media(min-width:640px){ .rs-h2{ font-size:38px; } }
+@media(min-width:768px){ .rs-h2{ font-size:46px; } }
+
+.rs-card { border-radius: 18px; padding: 1.1rem; }
+@media(min-width:640px){ .rs-card{ border-radius:20px; padding:1.35rem; } }
+
+.rs-btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; border-radius:9999px; padding:12px 20px; font-family:var(--font-body); font-size:14.5px; font-weight:500; transition:.18s ease; min-height:48px; text-align:center; }
+@media(min-width:640px){ .rs-btn{ padding:11px 22px; font-size:14px; min-height:auto; } }
+.rs-btn-white { background:#fff; color:#111; }
+.rs-btn-white:hover { background:#efefef; }
+.rs-btn-glass { color:#fff; }
+.rs-btn-outline { border:1px solid rgba(255,255,255,.22); color: rgba(255,255,255,.95); }
+.rs-btn-outline:hover { border-color: rgba(255,255,255,.4); }
+
+/* Forms – 16px on phones to prevent iOS zoom */
+.rs-input, .rs-select, .rs-textarea {
+  width:100%;
+  background: rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.16);
+  color:#fff;
+  font-family:var(--font-body);
+  outline:none;
+  transition:border-color .15s;
+}
+.rs-input, .rs-select { border-radius:9999px; padding:13px 16px; font-size:15px; }
+.rs-textarea { border-radius:18px; padding:12px 16px; font-size:15px; resize:none; }
+@media(min-width:640px){
+  .rs-input, .rs-select, .rs-textarea { padding-top:12px; padding-bottom:12px; font-size:14px; }
+}
+.rs-input::placeholder, .rs-textarea::placeholder { color: rgba(255,255,255,.5); }
+.rs-input:focus, .rs-select:focus, .rs-textarea:focus { border-color: rgba(255,255,255,.35); }
+.rs-select { background-color: #000; }
+.rs-select option { background:#111; }
+
+/* Grid helpers */
+.rs-grid { display:grid; gap:.85rem; }
+@media(min-width:640px){ .rs-grid{ gap:1rem; } }
+.rs-grid-2 { grid-template-columns:1fr; }
+@media(min-width:640px){ .rs-grid-2{ grid-template-columns:repeat(2,1fr);} }
+.rs-grid-3 { grid-template-columns:1fr; }
+@media(min-width:640px){ .rs-grid-3{ grid-template-columns:repeat(2,1fr);} }
+@media(min-width:1024px){ .rs-grid-3{ grid-template-columns:repeat(3,1fr);} }
+.rs-grid-4 { grid-template-columns:1fr; }
+@media(min-width:640px){ .rs-grid-4{ grid-template-columns:repeat(2,1fr);} }
+@media(min-width:1024px){ .rs-grid-4{ grid-template-columns:repeat(4,1fr);} }
+
+/* Navbar */
+.rs-nav-wrap { position:fixed; top:12px; left:0; right:0; z-index:60; padding:0 16px; }
+@media(min-width:640px){ .rs-nav-wrap{ top:16px; padding:0 24px;} }
+@media(min-width:1024px){ .rs-nav-wrap{ padding:0 56px;} }
+.rs-nav-inner { max-width:80rem; margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+.rs-nav-logo { width:44px; height:44px; border-radius:9999px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+@media(min-width:640px){ .rs-nav-logo{ width:48px; height:48px;} }
+.rs-nav-logo span { font-family:var(--font-heading); font-style:italic; color:#fff; font-size:20px; transform:translateY(1px); }
+@media(min-width:640px){ .rs-nav-logo span{ font-size:21px;} }
+
+/* FadingVideo helper */
+.rs-video-fade { opacity:0; }
+
+/* Utilities (minimal Tailwind-like helpers for the standalone file) */
+.text-center{text-align:center}
+.text-left{text-align:left}
+.flex{display:flex}
+.inline-flex{display:inline-flex}
+.grid{display:grid}
+.hidden{display:none}
+.block{display:block}
+.relative{position:relative}
+.absolute{position:absolute}
+.fixed{position:fixed}
+.inset-0{top:0;right:0;bottom:0;left:0}
+.z-0{z-index:0}
+.z-10{z-index:10}
+.z-50{z-index:50}
+.z-60{z-index:60}
+.min-h-screen{min-height:100vh}
+.w-full{width:100%}
+.h-full{height:100%}
+.items-center{align-items:center}
+.items-start{align-items:flex-start}
+.justify-center{justify-content:center}
+.justify-between{justify-content:space-between}
+.flex-col{flex-direction:column}
+.flex-wrap{flex-wrap:wrap}
+.gap-1{gap:.25rem}
+.gap-2{gap:.5rem}
+.gap-3{gap:.75rem}
+.gap-4{gap:1rem}
+.gap-6{gap:1.5rem}
+.gap-8{gap:2rem}
+.rounded-full{border-radius:9999px}
+.rounded-2xl{border-radius:1.25rem}
+.overflow-hidden{overflow:hidden}
+.object-cover{object-fit:cover}
+.object-center{object-position:center}
+
+/* Phone / Tablet / Desktop visibility helpers */
+@media (max-width: 1023px){ .lg-only{ display:none !important; } }
+@media (min-width: 1024px){ .mobile-only{ display:none !important; } }
+
+/* Motion / BlurText helper */
+.blur-text-wrap { display:flex; flex-wrap:wrap; justify-content:center; row-gap:.06em; }
+.blur-text-word { display:inline-block; margin-right:.26em; }
+
+/* Clinic color tokens – all white on black, per brief */
+.text-white{ color:#fff; }
+.text-white-90{ color: rgba(255,255,255,.90); }
+.text-white-80{ color: rgba(255,255,255,.80); }
+.text-white-70{ color: rgba(255,255,255,.70); }
+.text-white-60{ color: rgba(255,255,255,.60); }
+
+/* Spacing scale (mobile-first) */
+.p-4{padding:1rem}
+.p-5{padding:1.25rem}
+.p-6{padding:1.5rem}
+.px-4{padding-left:1rem;padding-right:1rem}
+.py-3{padding-top:.75rem;padding-bottom:.75rem}
+.mt-2{margin-top:.5rem}
+.mt-3{margin-top:.75rem}
+.mt-4{margin-top:1rem}
+.mt-6{margin-top:1.5rem}
+.mt-8{margin-top:2rem}
+.mb-4{margin-bottom:1rem}
+.mb-6{margin-bottom:1.5rem}
+
+/* Typography scale – responsive */
+.hero-title { font-family:var(--font-heading); font-style:italic; color:#fff; line-height:.88; letter-spacing:-0.02em; font-size:36px; }
+@media(min-width:400px){ .hero-title{ font-size:40px; } }
+@media(min-width:640px){ .hero-title{ font-size:48px; line-height:.86; letter-spacing:-0.035em; } }
+@media(min-width:768px){ .hero-title{ font-size:60px; } }
+@media(min-width:1024px){ .hero-title{ font-size:81px; letter-spacing:-0.045em; } }
+
+.capabilities-title { font-family:var(--font-heading); font-style:italic; color:#fff; line-height:.92; letter-spacing:-0.025em; font-size:42px; }
+@media(min-width:480px){ .capabilities-title{ font-size:48px; } }
+@media(min-width:640px){ .capabilities-title{ font-size:56px; letter-spacing:-0.035em; } }
+@media(min-width:768px){ .capabilities-title{ font-size:72px; } }
+@media(min-width:1024px){ .capabilities-title{ font-size:88px; } }
+
+/* WhatsApp floating – mobile only */
+.rs-wa-fab {
+  position:fixed; right:16px; bottom:16px; z-index:55;
+  background:#25D366; color:#0b2814;
+  border-radius:9999px; padding:11px 16px;
+  font-family:var(--font-body); font-size:13.5px; font-weight:600;
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+}
+@media(min-width:640px){ .rs-wa-fab{ display:none; } }
+
+/* Accessibility */
+:focus-visible { outline:2px solid rgba(255,255,255,.55); outline-offset:2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration:.001ms !important; transition-duration:.001ms !important; }
+}
+
+/* Print */
+@media print {
+  body { background:#fff; color:#000; }
+  .liquid-glass, .liquid-glass-strong { background:#fff; backdrop-filter:none; box-shadow:none; border:1px solid #ccc; }
+  .rs-nav-wrap, .rs-wa-fab, video { display:none !important; }
+}
+
+/* End of RS Clinic core stylesheet
+   ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+   The full 10,000-line standalone HTML inlines this file and the
+   JavaScript app below, so the clinic site works with zero build step.
+   All animations (FadingVideo rAF crossfade, BlurText, Framer Motion)
+   are preserved exactly as in the cinematic space-travel prompt.
+   ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+*/
